@@ -1,10 +1,12 @@
 {
   "name": "cmp-test",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "bundle.js",
   "scripts": {
-    "dev": "nodemon client",
-    "start": "node client",
+    "dev": "http-server -c-1",
+    "start": "node bundle",
+    "build:client": "browserify app/app.js > bundle.js",
+    "build:client:watch": "watchify app/app.js -d -o bundle.js -v",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,22 +23,28 @@
   },
   "homepage": "https://github.com/mandril888/cmp-test#readme",
   "dependencies": {
+    "angular": "^1.5.8",
+    "angular-route": "^1.5.8",
     "body-parser": "^1.15.2",
+    "browserify": "^13.1.0",
     "eslint": "^3.5.0",
     "express": "^4.14.0",
     "grunt": "^1.0.1",
-    "jsonwebtoken": "^7.1.9",
-    "mongodb": "^2.2.9",
-    "mongoose": "^4.6.0",
-    "morgan": "^1.7.0"
+    "pug": "^2.0.0-beta6"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.7",
+    "eslint": "^3.5.0",
+    "eslint-config-airbnb": "^11.1.0",
+    "eslint-plugin-import": "^1.15.0",
+    "eslint-plugin-jsx-a11y": "^2.2.2",
+    "eslint-plugin-react": "^6.2.2",
     "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-sass": "^1.0.0",
     "grunt-contrib-uglify": "^2.0.0",
     "grunt-contrib-watch": "^1.0.0",
-    "grunt-postcss": "^0.8.0"
+    "grunt-postcss": "^0.8.0",
+    "watchify": "^3.7.0"
   },
   "description": ""
 }
