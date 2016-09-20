@@ -38,30 +38,32 @@ angular.module('controllersModule', [])
 module.exports = 'controllersModule';
 
 },{"./modules/chat/chatCtrl":4,"./modules/profile/profileCtrl":5}],4:[function(require,module,exports){
-function chatCtrl() {
-  console.log('in the chat controllerrrrr');
+function chatCtrl($rootScope) {
+  console.log('in the chat controller');
+  $rootScope.colorBg = true;
 }
 
+chatCtrl.$inject = ['$rootScope'];
 module.exports = chatCtrl;
 
 },{}],5:[function(require,module,exports){
-function profileCtrl($scope) {
+function profileCtrl($rootScope) {
   console.log('in the profile controller');
 
-  $scope.greyBg = true;
-  $scope.textButton = 'ADD AS FRIEND';
-  $scope.toggleBg = function () {
-    if ($scope.greyBg === true) {
-      $scope.greyBg = false;
-      $scope.textButton = 'DELETE FRIEND';
+  $rootScope.colorBg = true;
+  $rootScope.textButton = 'ADD AS FRIEND';
+  $rootScope.toggleBg = function () {
+    if ($rootScope.colorBg === true) {
+      $rootScope.colorBg = false;
+      $rootScope.textButton = 'DELETE FRIEND';
     } else {
-      $scope.greyBg = true;
-      $scope.textButton = 'ADD AS FRIEND';
+      $rootScope.colorBg = true;
+      $rootScope.textButton = 'ADD AS FRIEND';
     }
   };
 }
 
-profileCtrl.$inject = ['$scope'];
+profileCtrl.$inject = ['$rootScope'];
 module.exports = profileCtrl;
 
 },{}],6:[function(require,module,exports){

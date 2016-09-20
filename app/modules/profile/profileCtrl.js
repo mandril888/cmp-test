@@ -1,18 +1,18 @@
-function profileCtrl($scope) {
+function profileCtrl($rootScope) {
   console.log('in the profile controller');
 
-  $scope.greyBg = true;
-  $scope.textButton = 'ADD AS FRIEND';
-  $scope.toggleBg = function () {
-    if ($scope.greyBg === true) {
-      $scope.greyBg = false;
-      $scope.textButton = 'DELETE FRIEND';
+  $rootScope.colorBg = true;
+  $rootScope.textButton = 'ADD AS FRIEND';
+  $rootScope.toggleBg = function () {
+    if ($rootScope.colorBg === true) {
+      $rootScope.colorBg = false;
+      $rootScope.textButton = 'DELETE FRIEND';
     } else {
-      $scope.greyBg = true;
-      $scope.textButton = 'ADD AS FRIEND';
+      $rootScope.colorBg = true;
+      $rootScope.textButton = 'ADD AS FRIEND';
     }
   };
 }
 
-profileCtrl.$inject = ['$scope'];
+profileCtrl.$inject = ['$rootScope'];
 module.exports = profileCtrl;

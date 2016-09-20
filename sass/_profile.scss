@@ -15,7 +15,7 @@
 		right: 60px;
 		top: 90px;
 	}
-	@media screen and (min-width: 400px){
+	@media screen and (min-width: 426px){
 		right: 140px;
 		top: 90px;
 	}
@@ -96,5 +96,12 @@
 	background-color: $grey;
 }
 .bg-btn-clicked{
-	background-color: $green;
+	background-color: $green2;
+}
+
+.bg-body-normal{
+	background-color: $bg-color-page;
+}
+.bg-body-clicked{
+	background-color: $pink-bg-color;
 }

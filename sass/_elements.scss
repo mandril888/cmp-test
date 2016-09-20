@@ -1,16 +1,15 @@
 html{
-	border: 1px solid black;
 	position: relative;
 	min-height: 100%;
 }
 
 body{
 	margin: 0;
-	background-color: $bg-color-page;
+	transition: all 1s;
 }
 
 a, button, input {
-	transition: all .5s;
+	transition: all 1s;
 }
 
 header{
