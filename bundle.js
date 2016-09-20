@@ -45,10 +45,23 @@ function chatCtrl() {
 module.exports = chatCtrl;
 
 },{}],5:[function(require,module,exports){
-function profileCtrl() {
+function profileCtrl($scope) {
   console.log('in the profile controller');
+
+  $scope.greyBg = true;
+  $scope.textButton = 'ADD AS FRIEND';
+  $scope.toggleBg = function () {
+    if ($scope.greyBg === true) {
+      $scope.greyBg = false;
+      $scope.textButton = 'DELETE FRIEND';
+    } else {
+      $scope.greyBg = true;
+      $scope.textButton = 'ADD AS FRIEND';
+    }
+  };
 }
 
+profileCtrl.$inject = ['$scope'];
 module.exports = profileCtrl;
 
 },{}],6:[function(require,module,exports){

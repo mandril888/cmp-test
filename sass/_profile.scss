@@ -61,7 +61,6 @@
 	position: absolute;
 	bottom: 20px;
 	left: 5%;
-	background-color: $grey;
 	text-align: center;
 	color: white;
 	width: 90%;
@@ -91,4 +90,11 @@
 		display: block;
 		margin-left: 5%;
 	}
+}
+
+.bg-btn-normal{
+	background-color: $grey;
+}
+.bg-btn-clicked{
+	background-color: $green;
 }
