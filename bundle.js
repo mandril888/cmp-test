@@ -39,7 +39,7 @@ module.exports = 'controllersModule';
 
 },{"./modules/chat/chatCtrl":4,"./modules/profile/profileCtrl":5}],4:[function(require,module,exports){
 function chatCtrl() {
-  console.log('in the chat controller');
+  console.log('in the chat controllerrrrr');
 }
 
 module.exports = chatCtrl;
