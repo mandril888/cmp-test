@@ -1,10 +1,11 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 const angular = require('angular');
-const angularRoute = require('angular-route');
+const ngRoute = require('angular-route');
+// const ngStorage = require('angular-localstorage');
 const controllersModule = require('./controllersModule');
 const routesModule = require('./routesModule');
 
-angular.module('cmp-test', [angularRoute, controllersModule, routesModule]);
+angular.module('cmp-test', [ngRoute, controllersModule, routesModule]);
 
 },{"./controllersModule":3,"./routesModule":6,"angular":10,"angular-route":8}],2:[function(require,module,exports){
 function config($routeProvider) {
@@ -38,18 +39,23 @@ angular.module('controllersModule', [])
 module.exports = 'controllersModule';
 
 },{"./modules/chat/chatCtrl":4,"./modules/profile/profileCtrl":5}],4:[function(require,module,exports){
-function chatCtrl($scope, $rootScope, $localStorage) {
+function chatCtrl($scope, $rootScope, $window) {
   $rootScope.colorBg = true;
+
+  const messages = [];
+  $window.localStorage.setItem('messages', JSON.stringify(messages));
+
   $scope.submit = function () {
     const myMessage = $scope.myMessage;
-    console.log(myMessage);
-    $scope.storage = $localStorage;
-    $scope.storage.message = [];
-    $scope.storage.message.push(myMessage);
+
+    const retrievedData = $window.localStorage.getItem('messages');
+    const localStorageMessages = JSON.parse(retrievedData);
+    localStorageMessages.push(myMessage);
+    $window.localStorage.setItem('messages', JSON.stringify(localStorageMessages));
   };
 }
 
-chatCtrl.$inject = ['$scope', '$rootScope', '$localStorage'];
+chatCtrl.$inject = ['$scope', '$rootScope', '$window'];
 module.exports = chatCtrl;
 
 },{}],5:[function(require,module,exports){

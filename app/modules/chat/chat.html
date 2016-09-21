@@ -1,6 +1,11 @@
 <header>
   <h2>Sophie</h2>
 </header>
+<div class="chat">
+	<div ng-repeat="message in messages">
+		
+	</div>
+</div>
 <form ng-submit="submit()" class="col-sm-6 col-sm-offset-3 input-group input-bottom">
   <div class="input-group">
     <input type="text" class="form-control" placeholder="Write a message..." ng-model="myMessage">

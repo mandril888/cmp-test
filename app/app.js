@@ -1,6 +1,7 @@
 const angular = require('angular');
-const angularRoute = require('angular-route');
+const ngRoute = require('angular-route');
+// const ngStorage = require('angular-localstorage');
 const controllersModule = require('./controllersModule');
 const routesModule = require('./routesModule');
 
-angular.module('cmp-test', [angularRoute, controllersModule, routesModule]);
+angular.module('cmp-test', [ngRoute, controllersModule, routesModule]);
