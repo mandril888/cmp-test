@@ -1,12 +1,14 @@
 <header>
   <h2>Sophie</h2>
 </header>
-<div class="chat">
-	<div ng-repeat="message in messages">
-		
-	</div>
+<div class="col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3 message-girl">
+  <img src="../../../img/img-profile.png" alt="" class="avatar-girl">
+  <p class="text-girl">{{randomText}}</p>
 </div>
-<form ng-submit="submit()" class="col-sm-6 col-sm-offset-3 input-group input-bottom">
+<div class="col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3  message-me" ng-repeat="message in messages">
+
+</div>
+<form ng-submit="submit()" class="col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3  input-group input-bottom">
   <div class="input-group">
     <input type="text" class="form-control" placeholder="Write a message..." ng-model="myMessage">
     <span class="input-group-btn">

@@ -7,3 +7,43 @@
 		margin: 2%;
 	}
 }
+
+.message-girl{
+	display: flex;
+	flex-direction: row-reverse;
+	animation-name: fade;
+	animation-duration: 0.4s;
+}
+
+.avatar-girl{
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+}
+
+.text-girl{
+	background-color: $blue;
+	color: white;
+	margin-right: 10px;
+	padding: 15px;
+	border-radius: 5px;
+	border-top-right-radius: 0;
+}
+
+@keyframes fade {
+	0% {
+		transform: scale(0);
+		opacity: 0.0;
+	}
+	70% {
+		transform: scale(1.05);
+	}
+	85% {
+		transform: scale(0.95);
+		opacity: 1;
+	}
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}

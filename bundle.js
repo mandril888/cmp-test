@@ -1,13 +1,12 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 const angular = require('angular');
 const ngRoute = require('angular-route');
-// const ngStorage = require('angular-localstorage');
 const controllersModule = require('./controllersModule');
 const routesModule = require('./routesModule');
 
 angular.module('cmp-test', [ngRoute, controllersModule, routesModule]);
 
-},{"./controllersModule":3,"./routesModule":6,"angular":10,"angular-route":8}],2:[function(require,module,exports){
+},{"./controllersModule":3,"./routesModule":7,"angular":11,"angular-route":9}],2:[function(require,module,exports){
 function config($routeProvider) {
   $routeProvider
     .when('/', {
@@ -38,9 +37,27 @@ angular.module('controllersModule', [])
 
 module.exports = 'controllersModule';
 
-},{"./modules/chat/chatCtrl":4,"./modules/profile/profileCtrl":5}],4:[function(require,module,exports){
+},{"./modules/chat/chatCtrl":5,"./modules/profile/profileCtrl":6}],4:[function(require,module,exports){
+function randomText() {
+  let text = '';
+  const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const lengthRandomText = Math.floor(Math.random() * 100);
+  for (let i = 0; i < lengthRandomText; i++) {
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+  }
+  return text;
+}
+
+module.exports = randomText;
+
+},{}],5:[function(require,module,exports){
+const randomText = require('./../../functions/randomText');
+
 function chatCtrl($scope, $rootScope, $window) {
   $rootScope.colorBg = true;
+
+  $scope.randomText = randomText();
+  console.log('random text: ' + $scope.randomText);
 
   const messages = [];
   $window.localStorage.setItem('messages', JSON.stringify(messages));
@@ -52,13 +69,16 @@ function chatCtrl($scope, $rootScope, $window) {
     const localStorageMessages = JSON.parse(retrievedData);
     localStorageMessages.push(myMessage);
     $window.localStorage.setItem('messages', JSON.stringify(localStorageMessages));
+
+    $scope.allMessages = localStorageMessages;
+    console.log($scope.allMessages);
   };
 }
 
 chatCtrl.$inject = ['$scope', '$rootScope', '$window'];
 module.exports = chatCtrl;
 
-},{}],5:[function(require,module,exports){
+},{"./../../functions/randomText":4}],6:[function(require,module,exports){
 function profileCtrl($rootScope) {
   $rootScope.colorBg = true;
   $rootScope.textButton = 'ADD AS FRIEND';
@@ -76,7 +96,7 @@ function profileCtrl($rootScope) {
 profileCtrl.$inject = ['$rootScope'];
 module.exports = profileCtrl;
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 const routes = require('./common/routes');
 
 angular.module('routesModule', [])
@@ -84,7 +104,7 @@ angular.module('routesModule', [])
 
 module.exports = 'routesModule';
 
-},{"./common/routes":2}],7:[function(require,module,exports){
+},{"./common/routes":2}],8:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.8
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -1155,11 +1175,11 @@ function ngViewFillContentFactory($compile, $controller, $route) {
 
 })(window, window.angular);
 
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 require('./angular-route');
 module.exports = 'ngRoute';
 
-},{"./angular-route":7}],9:[function(require,module,exports){
+},{"./angular-route":8}],10:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.8
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -32928,8 +32948,8 @@ $provide.value("$locale", {
 })(window);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":9}]},{},[1]);
+},{"./angular":10}]},{},[1]);

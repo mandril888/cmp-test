@@ -1,5 +1,10 @@
+const randomText = require('./../../functions/randomText');
+
 function chatCtrl($scope, $rootScope, $window) {
   $rootScope.colorBg = true;
+
+  $scope.randomText = randomText();
+  console.log('random text: ' + $scope.randomText);
 
   const messages = [];
   $window.localStorage.setItem('messages', JSON.stringify(messages));
@@ -11,6 +16,9 @@ function chatCtrl($scope, $rootScope, $window) {
     const localStorageMessages = JSON.parse(retrievedData);
     localStorageMessages.push(myMessage);
     $window.localStorage.setItem('messages', JSON.stringify(localStorageMessages));
+
+    $scope.allMessages = localStorageMessages;
+    console.log($scope.allMessages);
   };
 }
 
