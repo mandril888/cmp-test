@@ -1,6 +1,4 @@
 function profileCtrl($rootScope) {
-  console.log('in the profile controller');
-
   $rootScope.colorBg = true;
   $rootScope.textButton = 'ADD AS FRIEND';
   $rootScope.toggleBg = function () {

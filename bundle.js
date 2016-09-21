@@ -38,18 +38,22 @@ angular.module('controllersModule', [])
 module.exports = 'controllersModule';
 
 },{"./modules/chat/chatCtrl":4,"./modules/profile/profileCtrl":5}],4:[function(require,module,exports){
-function chatCtrl($rootScope) {
-  console.log('in the chat controller');
+function chatCtrl($scope, $rootScope, $localStorage) {
   $rootScope.colorBg = true;
+  $scope.submit = function () {
+    const myMessage = $scope.myMessage;
+    console.log(myMessage);
+    $scope.storage = $localStorage;
+    $scope.storage.message = [];
+    $scope.storage.message.push(myMessage);
+  };
 }
 
-chatCtrl.$inject = ['$rootScope'];
+chatCtrl.$inject = ['$scope', '$rootScope', '$localStorage'];
 module.exports = chatCtrl;
 
 },{}],5:[function(require,module,exports){
 function profileCtrl($rootScope) {
-  console.log('in the profile controller');
-
   $rootScope.colorBg = true;
   $rootScope.textButton = 'ADD AS FRIEND';
   $rootScope.toggleBg = function () {
