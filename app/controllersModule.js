@@ -3,6 +3,6 @@ const chatCtrl = require('./modules/chat/chatCtrl');
 
 angular.module('controllersModule', [])
   .controller('profileCtrl', profileCtrl)
-  .controller('chatCtrl', chatCtrl);
+  .controller('chatCtrl', chatCtrl)
 
 module.exports = 'controllersModule';

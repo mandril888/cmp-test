@@ -1,12 +1,12 @@
 const randomText = require('./chatHandlers/randomText');
+const $ = require('jquery');
 
 function chatCtrl($scope, $rootScope, $window) {
   $rootScope.colorBg = true;
 
   if (!$window.sessionStorage.randomMessage) {
     const inicialRandomMessage = randomText();
-    $window.sessionStorage.randomMessage = inicialRandomMessage;
-    $scope.randomText = $window.sessionStorage.randomMessage;
+    $scope.randomText = $window.sessionStorage.randomMessage = inicialRandomMessage;
   } else {
     $scope.randomText = $window.sessionStorage.randomMessage;
   }
@@ -14,10 +14,14 @@ function chatCtrl($scope, $rootScope, $window) {
   if (!$window.sessionStorage.messages) {
     const messages = [];
     $window.sessionStorage.setItem('messages', JSON.stringify(messages));
+  } else {
+    const retrievedData = $window.sessionStorage.getItem('messages');
+    const sessionStorageMessages = JSON.parse(retrievedData);
+    $scope.allMessages = sessionStorageMessages;
   }
 
   $scope.submit = function () {
-    const myMessage = $scope.myMessage;
+    const myMessage = { message: $scope.myMessage };
     $scope.myMessage = null;
 
     const retrievedData = $window.sessionStorage.getItem('messages');
@@ -27,6 +31,9 @@ function chatCtrl($scope, $rootScope, $window) {
 
     $scope.allMessages = sessionStorageMessages;
     console.log($scope.allMessages);
+
+    $('html, body').animate({
+      scrollTop: $('.enter-animation').offset().top }, 1000);
   };
 }
 

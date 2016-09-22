@@ -1,7 +1,7 @@
 function randomText() {
   let text = '';
-  const possible = ' abcude eoafighij kloman iuoepqr stuovw euxyiz ';
-  const lengthRandomText = Math.floor(Math.random() * 100);
+  const possible = '     abcdefghijklmnopqrstuvwxyzaaaaaeeeeeiiiiiooooouuuuu     ';
+  const lengthRandomText = Math.floor(Math.random() * 100) + 10;
   for (let i = 0; i < lengthRandomText; i++) {
     text += possible.charAt(Math.floor(Math.random() * possible.length));
   }

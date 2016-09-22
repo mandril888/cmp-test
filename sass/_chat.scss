@@ -1,6 +1,8 @@
 .input-text-bottom{
-	position: absolute;
+	// position: absolute;
 	bottom: 10px;
+	position: fixed;
+	box-shadow: 0 0 10px $bg-color-page;
 
 	@media screen and (max-width: 767px){
 		width: 96%;
@@ -8,9 +10,16 @@
 	}
 }
 
+.bg-grey{
+	position: absolute;
+	bottom: 0px;
+	position: fixed;
+	background-color: red;
+}
+
 .avatar{
-	width: 40px;
-	height: 40px;
+	width: 50px;
+	height: 50px;
 	border-radius: 50%;
 }
 
@@ -19,13 +28,17 @@
 	flex-direction: row-reverse;
 	animation-name: fade;
 	animation-duration: 0.4s;
-	margin-bottom: 25px;
+	margin-bottom: 5px;
+
+	@media screen and (min-width: 400px){
+	margin-bottom: 20px;
+	}
 }
 
 .text-girl{
 	background-color: $blue;
 	color: white;
-	margin-left: 50px;
+	margin-left: 60px;
 	margin-right: 10px;
 	padding: 15px;
 	border-radius: 5px;
@@ -34,21 +47,32 @@
 
 .message-myself{
 	display: flex;
-	animation-name: fade;
-	animation-duration: 0.4s;
-	margin-bottom: 25px;
+	margin-bottom: 5px;
+
+	@media screen and (min-width: 400px){
+		margin-bottom: 25px;
+	}
 }
 
 .text-myself{
 	background-color: white;
 	color: $grey-text;
-	margin-right: 50px;
+	margin-right: 60px;
 	margin-left: 10px;
 	padding: 15px;
 	border-radius: 5px;
 	border-top-left-radius: 0;
 }
 
+.enter-animation{
+	animation-name: fade;
+	animation-duration: 0.4s;
+	margin-bottom: 60px;
+
+	@media screen and (min-width: 768px){
+		margin-bottom: 70px;
+	}
+}
 
 @keyframes fade {
 	0% {
@@ -56,11 +80,12 @@
 		opacity: 0.0;
 	}
 	70% {
-		transform: scale(1.05);
+		transform: scale(1);
+		opacity: 0.4;
 	}
 	85% {
-		transform: scale(0.95);
-		opacity: 1;
+		transform: scale(0.9);
+		opacity: 0.5;
 	}
 	100% {
 		transform: scale(1);
