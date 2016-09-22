@@ -20,10 +20,6 @@ function profileCtrl($scope, $rootScope, $window) {
   $scope.closeApp = function () {
     $window.close();
   };
-
-  // $(window).unload(function () {
-  //   $window.sessionStorage.$reset();
-  // });
 }
 
 profileCtrl.$inject = ['$scope', '$rootScope', '$window'];
