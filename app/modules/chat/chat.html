@@ -1,14 +1,18 @@
 <header>
   <h2>Sophie</h2>
 </header>
+
 <div class="col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3 message-girl">
-  <a href="/#/"><img src="../../../img/img-profile.png" alt="" class="avatar-girl"></a>
+  <a href="/#/"><img src="../../../img/sophie-img-profile.png" alt="sophie-avatar" class="avatar"></a>
   <p class="text-girl">{{randomText}}</p>
 </div>
-<div class="col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3  message-me" ng-repeat="message in messages">
 
+<div class="col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3 message-myself" > <!-- ng-repeat="message in messages" -->
+  <a href=""><img src="../../../img/my-img-profile.jpg" alt="myself-avatar" class="avatar"></a>
+  <p class="text-myself">lackadaisically poundman elevener foremessenger necrotype lecithal plumping quatrefoil nonconsonant flatulency ligustrin nonpartner stratify achroite whatreck unlevel contextured amphithyron constraint parorexia uncriticised Heteromya jeopardize strobili</p>
 </div>
-<form ng-submit="submit()" class="col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3  input-group input-bottom">
+
+<form ng-submit="submit()" class="col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3  input-group input-text-bottom">
   <div class="input-group">
     <input type="text" class="form-control" placeholder="Write a message..." ng-model="myMessage">
     <span class="input-group-btn">

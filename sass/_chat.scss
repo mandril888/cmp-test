@@ -1,4 +1,4 @@
-.input-bottom{
+.input-text-bottom{
 	position: absolute;
 	bottom: 10px;
 
@@ -8,27 +8,47 @@
 	}
 }
 
-.message-girl{
-	display: flex;
-	flex-direction: row-reverse;
-	animation-name: fade;
-	animation-duration: 0.4s;
-}
-
-.avatar-girl{
+.avatar{
 	width: 40px;
 	height: 40px;
 	border-radius: 50%;
 }
 
+.message-girl{
+	display: flex;
+	flex-direction: row-reverse;
+	animation-name: fade;
+	animation-duration: 0.4s;
+	margin-bottom: 25px;
+}
+
 .text-girl{
 	background-color: $blue;
 	color: white;
+	margin-left: 50px;
 	margin-right: 10px;
 	padding: 15px;
 	border-radius: 5px;
 	border-top-right-radius: 0;
 }
+
+.message-myself{
+	display: flex;
+	animation-name: fade;
+	animation-duration: 0.4s;
+	margin-bottom: 25px;
+}
+
+.text-myself{
+	background-color: white;
+	color: $grey-text;
+	margin-right: 50px;
+	margin-left: 10px;
+	padding: 15px;
+	border-radius: 5px;
+	border-top-left-radius: 0;
+}
+
 
 @keyframes fade {
 	0% {
