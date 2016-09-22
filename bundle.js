@@ -60,21 +60,21 @@ function chatCtrl($scope, $rootScope, $window) {
   $scope.randomText = randomText();
   console.log('random text: ' + $scope.randomText);
 
-  if (!$window.localStorage.messages) {
+  if (!$window.sessionStorage.messages) {
     const messages = [];
-    $window.localStorage.setItem('messages', JSON.stringify(messages));
+    $window.sessionStorage.setItem('messages', JSON.stringify(messages));
   }
 
   $scope.submit = function () {
     const myMessage = $scope.myMessage;
     $scope.myMessage = null;
 
-    const retrievedData = $window.localStorage.getItem('messages');
-    const localStorageMessages = JSON.parse(retrievedData);
-    localStorageMessages.push(myMessage);
-    $window.localStorage.setItem('messages', JSON.stringify(localStorageMessages));
+    const retrievedData = $window.sessionStorage.getItem('messages');
+    const sessionStorageMessages = JSON.parse(retrievedData);
+    sessionStorageMessages.push(myMessage);
+    $window.sessionStorage.setItem('messages', JSON.stringify(sessionStorageMessages));
 
-    $scope.allMessages = localStorageMessages;
+    $scope.allMessages = sessionStorageMessages;
     console.log($scope.allMessages);
   };
 }
@@ -84,7 +84,7 @@ module.exports = chatCtrl;
 
 },{"./../../functions/randomText":4}],6:[function(require,module,exports){
 function profileCtrl($scope, $rootScope, $window) {
-  if (!$window.localStorage.sophieFriend) {
+  if (!$window.sessionStorage.sophieFriend) {
     $rootScope.colorBg = true;
   } else {
     $rootScope.colorBg = false;
@@ -93,7 +93,7 @@ function profileCtrl($scope, $rootScope, $window) {
   $rootScope.textButton = 'ADD AS FRIEND';
   $rootScope.toggleBg = function () {
     if ($rootScope.colorBg === true) {
-      $window.localStorage.sophieFriend = true;
+      $window.sessionStorage.sophieFriend = true;
       $rootScope.colorBg = false;
       $rootScope.textButton = 'DELETE FRIEND';
     } else {
@@ -107,7 +107,7 @@ function profileCtrl($scope, $rootScope, $window) {
   };
 
   // $(window).unload(function () {
-  //   $window.localStorage.$reset();
+  //   $window.sessionStorage.$reset();
   // });
 }
 

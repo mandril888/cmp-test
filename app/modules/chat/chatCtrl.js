@@ -6,21 +6,21 @@ function chatCtrl($scope, $rootScope, $window) {
   $scope.randomText = randomText();
   console.log('random text: ' + $scope.randomText);
 
-  if (!$window.localStorage.messages) {
+  if (!$window.sessionStorage.messages) {
     const messages = [];
-    $window.localStorage.setItem('messages', JSON.stringify(messages));
+    $window.sessionStorage.setItem('messages', JSON.stringify(messages));
   }
 
   $scope.submit = function () {
     const myMessage = $scope.myMessage;
     $scope.myMessage = null;
 
-    const retrievedData = $window.localStorage.getItem('messages');
-    const localStorageMessages = JSON.parse(retrievedData);
-    localStorageMessages.push(myMessage);
-    $window.localStorage.setItem('messages', JSON.stringify(localStorageMessages));
+    const retrievedData = $window.sessionStorage.getItem('messages');
+    const sessionStorageMessages = JSON.parse(retrievedData);
+    sessionStorageMessages.push(myMessage);
+    $window.sessionStorage.setItem('messages', JSON.stringify(sessionStorageMessages));
 
-    $scope.allMessages = localStorageMessages;
+    $scope.allMessages = sessionStorageMessages;
     console.log($scope.allMessages);
   };
 }
