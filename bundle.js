@@ -40,12 +40,13 @@ module.exports = 'controllersModule';
 },{"./modules/chat/chatCtrl":5,"./modules/profile/profileCtrl":6}],4:[function(require,module,exports){
 function randomText() {
   let text = '';
-  const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const possible = ' abcude eoafighij kloman iuoepqr stuovw euxyiz ';
   const lengthRandomText = Math.floor(Math.random() * 100);
   for (let i = 0; i < lengthRandomText; i++) {
     text += possible.charAt(Math.floor(Math.random() * possible.length));
   }
-  return text;
+  const textFinal = text[0].toUpperCase() + text.slice(1);
+  return textFinal;
 }
 
 module.exports = randomText;
@@ -59,11 +60,14 @@ function chatCtrl($scope, $rootScope, $window) {
   $scope.randomText = randomText();
   console.log('random text: ' + $scope.randomText);
 
-  const messages = [];
-  $window.localStorage.setItem('messages', JSON.stringify(messages));
+  if (!$window.localStorage.messages) {
+    const messages = [];
+    $window.localStorage.setItem('messages', JSON.stringify(messages));
+  }
 
   $scope.submit = function () {
     const myMessage = $scope.myMessage;
+    $scope.myMessage = null;
 
     const retrievedData = $window.localStorage.getItem('messages');
     const localStorageMessages = JSON.parse(retrievedData);

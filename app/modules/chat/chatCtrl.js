@@ -6,11 +6,14 @@ function chatCtrl($scope, $rootScope, $window) {
   $scope.randomText = randomText();
   console.log('random text: ' + $scope.randomText);
 
-  const messages = [];
-  $window.localStorage.setItem('messages', JSON.stringify(messages));
+  if (!$window.localStorage.messages) {
+    const messages = [];
+    $window.localStorage.setItem('messages', JSON.stringify(messages));
+  }
 
   $scope.submit = function () {
     const myMessage = $scope.myMessage;
+    $scope.myMessage = null;
 
     const retrievedData = $window.localStorage.getItem('messages');
     const localStorageMessages = JSON.parse(retrievedData);
