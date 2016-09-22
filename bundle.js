@@ -37,22 +37,8 @@ angular.module('controllersModule', [])
 
 module.exports = 'controllersModule';
 
-},{"./modules/chat/chatCtrl":5,"./modules/profile/profileCtrl":6}],4:[function(require,module,exports){
-function randomText() {
-  let text = '';
-  const possible = ' abcude eoafighij kloman iuoepqr stuovw euxyiz ';
-  const lengthRandomText = Math.floor(Math.random() * 100);
-  for (let i = 0; i < lengthRandomText; i++) {
-    text += possible.charAt(Math.floor(Math.random() * possible.length));
-  }
-  const textFinal = text[0].toUpperCase() + text.slice(1);
-  return textFinal;
-}
-
-module.exports = randomText;
-
-},{}],5:[function(require,module,exports){
-const randomText = require('./../../functions/randomText');
+},{"./modules/chat/chatCtrl":4,"./modules/profile/profileCtrl":6}],4:[function(require,module,exports){
+const randomText = require('./chatHandlers/randomText');
 
 function chatCtrl($scope, $rootScope, $window) {
   $rootScope.colorBg = true;
@@ -82,7 +68,21 @@ function chatCtrl($scope, $rootScope, $window) {
 chatCtrl.$inject = ['$scope', '$rootScope', '$window'];
 module.exports = chatCtrl;
 
-},{"./../../functions/randomText":4}],6:[function(require,module,exports){
+},{"./chatHandlers/randomText":5}],5:[function(require,module,exports){
+function randomText() {
+  let text = '';
+  const possible = ' abcude eoafighij kloman iuoepqr stuovw euxyiz ';
+  const lengthRandomText = Math.floor(Math.random() * 100);
+  for (let i = 0; i < lengthRandomText; i++) {
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+  }
+  const textFinal = text[0].toUpperCase() + text.slice(1);
+  return textFinal;
+}
+
+module.exports = randomText;
+
+},{}],6:[function(require,module,exports){
 function profileCtrl($scope, $rootScope, $window) {
   if (!$window.sessionStorage.sophieFriend) {
     $rootScope.colorBg = true;

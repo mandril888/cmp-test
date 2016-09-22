@@ -1,4 +1,4 @@
-const randomText = require('./../../functions/randomText');
+const randomText = require('./chatHandlers/randomText');
 
 function chatCtrl($scope, $rootScope, $window) {
   $rootScope.colorBg = true;
