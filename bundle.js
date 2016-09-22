@@ -43,8 +43,13 @@ const randomText = require('./chatHandlers/randomText');
 function chatCtrl($scope, $rootScope, $window) {
   $rootScope.colorBg = true;
 
-  $scope.randomText = randomText();
-  console.log('random text: ' + $scope.randomText);
+  if (!$window.sessionStorage.randomMessage) {
+    const inicialRandomMessage = randomText();
+    $window.sessionStorage.randomMessage = inicialRandomMessage;
+    $scope.randomText = $window.sessionStorage.randomMessage;
+  } else {
+    $scope.randomText = $window.sessionStorage.randomMessage;
+  }
 
   if (!$window.sessionStorage.messages) {
     const messages = [];
@@ -84,26 +89,25 @@ module.exports = randomText;
 
 },{}],6:[function(require,module,exports){
 function profileCtrl($scope, $rootScope, $window) {
-  if (!$window.sessionStorage.sophieFriend) {
+  if (!$window.sessionStorage.sophieFriend || $window.sessionStorage.sophieFriend === 'false') {
+    console.log('enter');
     $rootScope.colorBg = true;
+    $rootScope.textButton = 'ADD AS FRIEND';
   } else {
     $rootScope.colorBg = false;
+    $rootScope.textButton = 'DELETE FRIEND';
   }
 
-  $rootScope.textButton = 'ADD AS FRIEND';
   $rootScope.toggleBg = function () {
     if ($rootScope.colorBg === true) {
       $window.sessionStorage.sophieFriend = true;
       $rootScope.colorBg = false;
       $rootScope.textButton = 'DELETE FRIEND';
     } else {
+      $window.sessionStorage.sophieFriend = false;
       $rootScope.colorBg = true;
       $rootScope.textButton = 'ADD AS FRIEND';
     }
-  };
-
-  $scope.closeApp = function () {
-    $window.close();
   };
 }
 
