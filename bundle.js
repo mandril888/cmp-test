@@ -72,8 +72,7 @@ function chatCtrl($scope, $rootScope, $window) {
     $scope.allMessages = sessionStorageMessages;
     console.log($scope.allMessages);
 
-    $('html, body').animate({
-      scrollTop: $('.enter-animation').offset().top }, 1000);
+    $('html, body').animate({ scrollTop: $('.enter-animation').offset().top }, 1000);
   };
 }
 
