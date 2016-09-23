@@ -3,7 +3,6 @@ const $ = require('jquery');
 
 function chatCtrl($scope, $rootScope, $window) {
   $rootScope.colorBg = true;
-  $('html, body').animate({ scrollTop: $(document).height() }, 1000);
 
   if (!$window.sessionStorage.randomMessage) {
     const inicialRandomMessage = randomText();
@@ -21,6 +20,7 @@ function chatCtrl($scope, $rootScope, $window) {
     const retrievedData = $window.sessionStorage.getItem('messages');
     const sessionStorageMessages = JSON.parse(retrievedData);
     $scope.allMessages = sessionStorageMessages;
+    $('html, body').animate({ scrollTop: $(document).height() }, 1000);
   }
 
   $scope.submit = function () {
