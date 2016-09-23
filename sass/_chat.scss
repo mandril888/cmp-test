@@ -66,6 +66,16 @@
 	border-top-left-radius: 0;
 }
 
+.green-circle{
+	position: absolute;
+	background-color: $green;
+	top: 35px;
+	right: 15px;
+	height: 15px;
+	width: 15px;
+	border-radius: 50%;
+}
+
 .enter-animation{
 	animation-name: fade;
 	animation-duration: 0.4s;
