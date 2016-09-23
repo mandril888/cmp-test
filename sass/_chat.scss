@@ -47,6 +47,20 @@
 	border-top-right-radius: 0;
 }
 
+.tri-left.rigth-top:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+	right: 65px;
+	left: auto;
+	top: 0px;
+	bottom: auto;
+	border: 15px solid;
+	border-color: $blue transparent transparent transparent;
+	z-index: -1;
+}
+
 .message-myself{
 	display: flex;
 	margin-bottom: 5px;
@@ -66,6 +80,21 @@
 	border-top-left-radius: 0;
 }
 
+.tri-right.left-top:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+	left: 65px;
+	right: auto;
+	top: 0px;
+	bottom: auto;
+	border: 15px solid;
+	border-color: white transparent transparent transparent;
+	z-index: -1;
+
+}
+
 .green-circle{
 	position: absolute;
 	background-color: $green;
@@ -80,10 +109,6 @@
 	animation-name: fade;
 	animation-duration: 0.4s;
 	margin-bottom: 60px;
-}
-
-.bottom-page{
-	clear: both;
 }
 
 @keyframes fade {
