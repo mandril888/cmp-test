@@ -43,6 +43,7 @@ const $ = require('jquery');
 
 function chatCtrl($scope, $rootScope, $window) {
   $rootScope.colorBg = true;
+  $('html, body').animate({ scrollTop: $(document).height() }, 1000);
 
   if (!$window.sessionStorage.randomMessage) {
     const inicialRandomMessage = randomText();
