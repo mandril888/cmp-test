@@ -55,7 +55,7 @@
 }
 
 .residence-city{
-	color: $pink;
+	color: $pink-text;
 	font-size: 0.8em;
 	font-weight: bold;
 	margin-bottom: 7px;
@@ -119,12 +119,12 @@
 	background-color: $grey;
 }
 .bg-btn-clicked{
-	background-color: $brown;
+	background-color: $brown-btn;
 }
 
 .bg-body-normal{
-	background-color: $bg-color-page;
+	background-color: $grey-bg-color-page;
 }
 .bg-body-clicked{
-	background-color: $pink-bg-color;
+	background-color: $pink-bg-color-page;
 }
