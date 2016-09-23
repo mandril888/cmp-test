@@ -47,8 +47,10 @@ function chatCtrl($scope, $rootScope, $window) {
   if (!$window.sessionStorage.randomMessage) {
     const inicialRandomMessage = randomText();
     $scope.randomText = $window.sessionStorage.randomMessage = inicialRandomMessage;
+    $('.message-girl').addClass('animate-once');
   } else {
     $scope.randomText = $window.sessionStorage.randomMessage;
+    $('.message-girl').removeClass('animate-once');
   }
 
   if (!$window.sessionStorage.messages) {

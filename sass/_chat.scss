@@ -28,8 +28,6 @@
 .message-girl{
 	display: flex;
 	flex-direction: row-reverse;
-	animation-name: fade;
-	animation-duration: 0.4s;
 	margin-bottom: 5px;
 
 	@media screen and (min-width: 768px){
@@ -103,6 +101,11 @@
 	height: 15px;
 	width: 15px;
 	border-radius: 50%;
+}
+
+.animate-once{
+	animation-name: fade;
+	animation-duration: 0.4s;
 }
 
 .enter-animation{
