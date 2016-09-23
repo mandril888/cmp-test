@@ -4,6 +4,7 @@ const $ = require('jquery');
 function chatCtrl($scope, $rootScope, $window) {
   $rootScope.colorBg = true;
 
+  // check if the girl has written something to create or no the random message
   if (!$window.sessionStorage.randomMessage) {
     const inicialRandomMessage = randomText();
     $scope.randomText = $window.sessionStorage.randomMessage = inicialRandomMessage;
@@ -13,6 +14,7 @@ function chatCtrl($scope, $rootScope, $window) {
     $('.message-girl').removeClass('animate-once');
   }
 
+  // check if I have written something in the chat to generate the messages in the page
   if (!$window.sessionStorage.messages) {
     const messages = [];
     $window.sessionStorage.setItem('messages', JSON.stringify(messages));
@@ -23,6 +25,7 @@ function chatCtrl($scope, $rootScope, $window) {
     $('html, body').animate({ scrollTop: $(document).height() }, 1000);
   }
 
+  //function to storage my written messages
   $scope.submit = function () {
     const myMessage = { message: $scope.myMessage };
     $scope.myMessage = null;
@@ -31,9 +34,7 @@ function chatCtrl($scope, $rootScope, $window) {
     const sessionStorageMessages = JSON.parse(retrievedData);
     sessionStorageMessages.push(myMessage);
     $window.sessionStorage.setItem('messages', JSON.stringify(sessionStorageMessages));
-
     $scope.allMessages = sessionStorageMessages;
-    console.log($scope.allMessages);
 
     $('html, body').animate({ scrollTop: $('.enter-animation').offset().top }, 1000);
   };

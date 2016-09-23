@@ -44,6 +44,7 @@ const $ = require('jquery');
 function chatCtrl($scope, $rootScope, $window) {
   $rootScope.colorBg = true;
 
+  // check if the girl has written something to create or no the random message
   if (!$window.sessionStorage.randomMessage) {
     const inicialRandomMessage = randomText();
     $scope.randomText = $window.sessionStorage.randomMessage = inicialRandomMessage;
@@ -53,6 +54,7 @@ function chatCtrl($scope, $rootScope, $window) {
     $('.message-girl').removeClass('animate-once');
   }
 
+  // check if I have written something in the chat to generate the messages in the page
   if (!$window.sessionStorage.messages) {
     const messages = [];
     $window.sessionStorage.setItem('messages', JSON.stringify(messages));
@@ -63,6 +65,7 @@ function chatCtrl($scope, $rootScope, $window) {
     $('html, body').animate({ scrollTop: $(document).height() }, 1000);
   }
 
+  //function to storage my written messages
   $scope.submit = function () {
     const myMessage = { message: $scope.myMessage };
     $scope.myMessage = null;
@@ -71,9 +74,7 @@ function chatCtrl($scope, $rootScope, $window) {
     const sessionStorageMessages = JSON.parse(retrievedData);
     sessionStorageMessages.push(myMessage);
     $window.sessionStorage.setItem('messages', JSON.stringify(sessionStorageMessages));
-
     $scope.allMessages = sessionStorageMessages;
-    console.log($scope.allMessages);
 
     $('html, body').animate({ scrollTop: $('.enter-animation').offset().top }, 1000);
   };
@@ -85,10 +86,10 @@ module.exports = chatCtrl;
 },{"./chatHandlers/randomText":5,"jquery":12}],5:[function(require,module,exports){
 function randomText() {
   let text = '';
-  const possible = '     abcdefghijklmnopqrstuvwxyzaaaaaeeeeeiiiiiooooouuuuu     ';
+  const possibleChar = '     abcdefghijklmnopqrstuvwxyzaaaaaeeeeeiiiiiooooouuuuu     ';
   const lengthRandomText = Math.floor(Math.random() * 100) + 10;
   for (let i = 0; i < lengthRandomText; i++) {
-    text += possible.charAt(Math.floor(Math.random() * possible.length));
+    text += possibleChar.charAt(Math.floor(Math.random() * possibleChar.length));
   }
   const textFinal = text[0].toUpperCase() + text.slice(1);
   return textFinal;
@@ -98,8 +99,8 @@ module.exports = randomText;
 
 },{}],6:[function(require,module,exports){
 function profileCtrl($scope, $rootScope, $window) {
+  // check if the girl is or not a friend
   if (!$window.sessionStorage.sophieFriend || $window.sessionStorage.sophieFriend === 'false') {
-    console.log('enter');
     $rootScope.colorBg = true;
     $rootScope.textButton = 'ADD AS FRIEND';
   } else {
@@ -107,6 +108,7 @@ function profileCtrl($scope, $rootScope, $window) {
     $rootScope.textButton = 'DELETE FRIEND';
   }
 
+  // function to change the bg page and button colors depending if she is or not a friend
   $rootScope.toggleBg = function () {
     if ($rootScope.colorBg === true) {
       $window.sessionStorage.sophieFriend = true;

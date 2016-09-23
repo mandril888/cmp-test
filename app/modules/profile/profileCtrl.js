@@ -1,6 +1,6 @@
 function profileCtrl($scope, $rootScope, $window) {
+  // check if the girl is or not a friend
   if (!$window.sessionStorage.sophieFriend || $window.sessionStorage.sophieFriend === 'false') {
-    console.log('enter');
     $rootScope.colorBg = true;
     $rootScope.textButton = 'ADD AS FRIEND';
   } else {
@@ -8,6 +8,7 @@ function profileCtrl($scope, $rootScope, $window) {
     $rootScope.textButton = 'DELETE FRIEND';
   }
 
+  // function to change the bg page and button colors depending if she is or not a friend
   $rootScope.toggleBg = function () {
     if ($rootScope.colorBg === true) {
       $window.sessionStorage.sophieFriend = true;
